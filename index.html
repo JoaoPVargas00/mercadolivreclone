@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mercado Livre Clone</title>
+  <style>
+    :root {
+      --yellow: #ffe600;
+      --dark-gray: #333;
+      --light-gray: #999;
+      --green: #00a650;
+      --white: #fff;
+      --bg: #ebebeb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+    }
+
+    /* Top Header */
+    .header-top {
+      background-color: var(--yellow);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      width: 134px;
+    }
+
+    .search-container {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .user-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .user-icons a {
+      text-decoration: none;
+      color: var(--dark-gray);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+    }
+
+    /* Bottom Header */
+    .header-bottom {
+      background-color: #fff;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--dark-gray);
+      border-bottom: 1px solid #ddd;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .menu a {
+      color: var(--dark-gray);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 30px 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: var(--white);
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card img {
+      width: 45%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .product-card .price {
+      font-size: 18px;
+      color: var(--green);
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .product-card .desc {
+      font-size: 14px;
+      color: #444;
+      margin-top: 5px;
+    }
+
+    footer {
+      background-color: var(--yellow);
+      padding: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--dark-gray);
+      margin-top: 40px;
+    }
+
+.zoom {
+  transition: transform 0.3s ease;
+}
+.form {
+    margin-top: 15px;
+}
+  
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.zoom:hover {
+  transform: scale(1.1);
+}
+    @media (max-width: 768px) {
+      .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-container {
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .user-icons {
+        justify-content: flex-end;
+        width: 100%;
+      }
+
+      .header-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .menu {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Header -->
+  <div class="header-top">
+    <img src="https://s2.glbimg.com/Bu6upvmSg6SRv0za635uXphThKo=/620x430/e.glbimg.com/og/ed/f/original/2020/03/28/mercado-livre.jpg" alt="logo" class="logo" />
+
+    <div class="search-container">
+      <input type="text" placeholder="Buscar produtos, marcas e muuito mais..." />
+    </div>
+
+    <div class="user-icons">
+      <a href="#">Compras</a>
+      <a href="#">Favoritos</a>
+      <a href="#">Lista de desejo 💟</a>
+      <a href="#">Carrinho 🛒</a>
+      <img src="https://i.pravatar.cc/100" alt="Avatar" class="avatar" />
+    </div>
+  </div>
+
+  <!-- Bottom Header -->
+  <div class="header-bottom">
+    <div class="location">
+      📍 <span>Envio para Rio de Janeiro - RJ</span>
+    </div>
+    <nav class="menu">
+      <a href="#">Categorias</a>
+      <a href="#">Ofertas</a>
+      <a href="#">Histórico</a>
+      <a href="#">Moda</a>
+      <a href="#">Supermercado</a>
+      <a href="#">Celulares</a>
+      <a href="#">Ajuda</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <h2>Ofertas do dia</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://cdn.awsli.com.br/2500x2500/1919/1919257/produto/266893511/455445456-pk78t6n6gf.jpg" class="zoom" alt="Produto" />
+        <div class="price">R$ 4.949,99</div>
+        <div class="desc">
+          Console Playstation 5 SSD 825GB Edição Limitada Marvel's Spider Man 2 - Versão com Leitor (Seminovo) - PS5 Sony
+        <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.kabum.com.br/produtos/fotos/536015/headset-gamer-sem-fio-hyperx-cloud-iii-deiver-53mm-wireless-multi-plataforma-preto-77z45aa_1714047661_g.jpg" class="zoom" alt="Produto" />
+        <div class="price">R$ 429,99</div>
+        <div class="desc">Headset Gamer Sem Fio HyperX Cloud III, Drive 53mm, Wireless, Multi Plataforma, Preto</div>
+        <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+      </div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71rpGOUI-2L._AC_UF894,1000_QL80_.jpg" class="zoom" alt="Produto" />
+        <div class="price">R$ 1.389,90</div>
+        <div class="desc">Cadeira Gamer Profissional TGC12 Preta/Vermelha THUNDERX3</div>
+        <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+      </div>
+      <div class="product-card">
+        <img src="https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/a/-/a-pc-acegeek-diamond-preto-r339-gpu-m-002_3.jpg" class="zoom" alt="Produto" />
+        <div class="price">R$ 2.599,97</div>
+        <div class="desc">PC Gamer Mancer GM-012, Intel Core i7, GeForce RTX 3050 6GB, 16GB DDR3, SSD 480GB</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://images.kabum.com.br/produtos/fotos/sync_mirakl/521279/Mouse-Gamer-Exbom-3-200-Dpi-ptico-Para-Jogo-Com-LED-RGB-USB_1711630092_g.jpg" class="zoom" alt="Produto" />
+        <div class="price">R$ 29,90</div>
+        <div class="desc">Mouse Gamer Exbom, 3.200 Dpi, Óptico, Para Jogo, Com LED, RGB, USB</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://fujiokadistribuidor.vteximg.com.br/arquivos/ids/280960" class="zoom" alt="Produto" />
+        <div class="price">R$ 9.999,99</div>
+        <div class="desc">Notebook Gamer Acer Nitro, Intel® Core® i5, NVIDIA GTX 1650, 8GB RAM, 512GB SSD, Linux Gutta</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://fastshopbr.vtexassets.com/arquivos/ids/1623913/1_SGUN85DU8000_PRD_1500_2.jpg?v=638724813355930000" class="zoom" alt="Produto" />
+        <div class="price">R$ 7.599,00</div>
+        <div class="desc">Notebook Gamer Acer Nitro, Intel® Core® i5, NVIDIA GTX 1650, 8GB RAM, 512GB SSD, Linux Gutta</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://fujiokadistribuidor.vteximg.com.br/arquivos/ids/280960" class="zoom" alt="Produto" />
+        <div class="price">R$ 9.999,99</div>
+        <div class="desc">Smart TV Samsung 85" Polegadas Crystal UHD 4K 85DU8000 2024, Painel Dynamic Crystal Color e Gaming Hub</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_862492-MLU72675272410_112023-F.webp" class="zoom" alt="Produto" />
+        <div class="price">R$ 256,50</div>
+        <div class="desc">Caixa De Som Amplificada Bluetooth 250w Cm250 Cor Preto Mondial 127/220V</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_637778-MLA74556531647_022024-F.webp" class="zoom" alt="Produto" />
+        <div class="price">R$ 1.2599,46</div>
+        <div class="desc">CSamsung Galaxy A25 5G Dual SIM 256 GB azul 8 GB RAM</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label></div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71rpGOUI-2L._AC_UF894,1000_QL80_.jpg" class="zoom" alt="Produto" />
+        <div class="price">R$ 1.389,90</div>
+        <div class="desc">Cadeira Gamer Profissional TGC12 Preta/Vermelha THUNDERX3</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+      <div class="product-card">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_637283-MLB84404230374_052025-F-smartphone-motorola-moto-g24-4g-256gb-4gb-grafite-ubook.webp" class="zoom" alt="Produto" />
+        <div class="price">R$ 797,55</div>
+        <div class="desc">Smartphone Motorola Moto G24 4g 256gb 4gb Grafite + Ubook</div>
+      <label>Parcelas:
+            <select name="parcelas">
+                <option value="12">10x</option>
+                <option value="24">12x com juros</option>
+            </select>
+        </label>
+    </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    Clone Mercado Livre © 2025 - Feito para fins educacionais.
+  </footer>
+</body>
+</html>
